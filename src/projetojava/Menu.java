@@ -1,19 +1,26 @@
 package projetojava;
 
 import java.io.IOException;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import projeto.controller.ProjetoController;
 import projeto.model.Hardware;
 import projeto.model.Software;
 import projeto.util.Cores;
 
 public class Menu {
 
-	private static Object produtos;
-
 	public static void main(String[] args) {
+		
+		
+		ProjetoController produto = new ProjetoController();
 		Scanner leia = new Scanner(System.in);
+		
+		int codigo = 0, tipo; 
+		String nomeproduto, vendedor, estado, pais;
+		float preco = 0;
 
 		// Teste da classe Hardware
 
@@ -61,14 +68,42 @@ public class Menu {
 
 			case 1:
 				System.out.println(Cores.TEXT_WHITE + "Anunciar um produto!\n\n");
+				
+				System.out.println("Digite o nome do produto: ");
+				nomeproduto = leia.next();
+				System.out.println("Digite o nome do vendedor: ");
+				leia.skip("\\R?");
+				vendedor = leia.nextLine();
+				
+				do {
+					System.out.println("Digite o tipo de produto (1 - Hardware/2 - Software");
+					tipo = leia.nextInt();
+				}while(tipo < 1 && tipo > 2);
+				
+				switch(tipo) {
+				
+				case 1 -> {
+					System.out.println("Digite o Estado do Produto (Novo, Usado, Etc...): ");
+					estado = leia.nextLine();
+					produto.cadastrar(new Hardware(produto.gerarCodigo(),codigo, nomeproduto, preco, vendedor, estado));
+					}
+				
+				case 2 -> {
+					
+					System.out.println("Digite o País da chave de Ativação deste Software: ");
+					pais = leia.nextLine();
+					produto.cadastrar(new Software(produto.gerarCodigo(), codigo, nomeproduto, preco, vendedor, pais));
+				}
+				}
 
 				keyPress();
-
 				break;
 
 			case 2:
 				System.out.println(Cores.TEXT_WHITE + "Listar todos os produtos\n\n");
+				produto.listarTodas();
 				keyPress();
+				
 				break;
 
 			case 3:
