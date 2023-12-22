@@ -1,6 +1,6 @@
 package projeto.model;
 
-public class Projeto {
+public abstract class Projeto {
 
 	private int codigo;
 	private int tipo;
