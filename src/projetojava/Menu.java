@@ -1,17 +1,38 @@
 package projetojava;
 
 import java.util.Scanner;
+import projeto.util.Cores;
+import projeto.model.Projeto;
+import projeto.model.Software;
+import projeto.model.Hardware;
 
 public class Menu {
 
-	public static void main(String[] args) {
+	public static void main(String[] args ) {
 		Scanner leia = new Scanner(System.in);
 		
-		int opcao; 
+		//teste da classe Projeto 
 		
-		while(true) {
-			
-			
+		Projeto p1 = new Projeto(1,2,"Chave de Ativação PascalX",100.0f,"Henrique Maciel");
+        p1.visualizar(); 
+        
+        //Teste da classe Hardware 
+        
+        Hardware h1 = new Hardware(2,2, "Notebook Lavelho", 2000.0f, "Amanda Marcelino", "Semi-Novo");
+        h1.visualizar();
+        
+        //Teste da classe Software 
+        
+        Software s1 = new Software(3,1, "Recuperador de dados corrompidos", 25.0f, "Luciano Acácio", "Brasil");
+        s1.visualizar();
+	
+
+		int opcao;
+
+		while (true) {
+			System.out.println(Cores.TEXT_WHITE + Cores.ANSI_PURPLE_BACKGROUND
+					+ "*****************************************************");
+
 			System.out.println("*****************************************************");
 			System.out.println("                                                     ");
 			System.out.println("                ASSEMBLY TECH STORE                  ");
@@ -28,63 +49,58 @@ public class Menu {
 			System.out.println("                                                     ");
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
-			System.out.println("                                                     ");
-			
-			opcao = leia.nextInt(); 
-			
+			System.out.println("                                                     " + Cores.TEXT_RESET);
+
+			opcao = leia.nextInt();
+
 			if (opcao == 7) {
-				System.out.println("\nAssembly Tech Store - Com você e seu computador desde 1950!");
+				System.out.println(
+						Cores.TEXT_WHITE_BOLD + "\nAssembly Tech Store - Com você e seu computador desde 1950!");
 				sobre();
 				leia.close();
 				System.exit(0);
-				
-				switch(opcao) {
-				
-				case 1: 
-					System.out.println("Anunciar um produto!\n\n");
-					
+
+				switch (opcao) {
+
+				case 1:
+					System.out.println(Cores.TEXT_WHITE + "Anunciar um produto!\n\n");
+
 					break;
-					
-				case 2: 
-					System.out.println("Listar todos os produtos\n\n");
-					
-					break; 
-					
+
+				case 2:
+					System.out.println(Cores.TEXT_WHITE + "Listar todos os produtos\n\n");
+
+					break;
+
 				case 3:
-					System.out.println("Buscar um produto pelo número\n\n");
-					
-				break; 
-				
-				case 4: 
-					System.out.println("Atualizar os dados do produto\n\n");
-					
+					System.out.println(Cores.TEXT_WHITE + "Buscar um produto pelo número\n\n");
+
 					break;
-					
-				case 5: 
-					System.out.println("Vender um produto\n\n");
-					
+
+				case 4:
+					System.out.println(Cores.TEXT_WHITE + "Atualizar os dados do produto\n\n");
+
 					break;
-					
-				case 6: 
-					System.out.println("Comprar um produto\n\n");
-					
-				break; 
-				
-				default: 
-					System.out.println("\nOpção Inválida!\n");
+
+				case 5:
+					System.out.println(Cores.TEXT_WHITE + "Vender um produto\n\n");
+
 					break;
-					
-					
-				
+
+				case 6:
+					System.out.println(Cores.TEXT_WHITE + "Comprar um produto\n\n");
+
+					break;
+
+				default:
+					System.out.println(Cores.TEXT_RED_BOLD + "\nOpção Inválida!\n" + Cores.TEXT_RESET);
+					break;
+
 				}
-				
-				
+
 			}
-			
+
 		}
-		
-		
-		
 
 	}
 
@@ -94,7 +110,7 @@ public class Menu {
 		System.out.println("David Rocha Bomfim - davidrochabomfim6@gmail.com");
 		System.out.println("github.com/David-Bomfim");
 		System.out.println("*********************************************************");
-		
+
 	}
 
 }
